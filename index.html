@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#050505">
 <meta name="description" content="Nomea Launcher - Premium Minecraft Java Launcher for Android.">
+
 <title>Nomea Launcher | Official</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -112,16 +113,25 @@ nav a:hover {
 }
 
 .badge {
-    display: inline-block;
-    padding: 9px 20px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 25px;
     border: 1px solid rgba(255,30,45,.5);
     border-radius: 30px;
     background: rgba(255,0,20,.08);
     box-shadow: 0 0 25px rgba(255,0,20,.2);
     color: #ff5360;
-    font-size: 12px;
-    letter-spacing: 3px;
+    font-size: 11px;
+    letter-spacing: 2px;
     margin-bottom: 30px;
+}
+
+.badge span {
+    color: #ff2635;
+    font-size: 19px;
+    text-shadow: 0 0 15px red, 0 0 30px red;
 }
 
 .hero h1 {
@@ -221,6 +231,8 @@ nav a:hover {
     padding: 35px 25px;
     border-radius: 20px;
     text-align: left;
+    position: relative;
+    overflow: hidden;
     background: linear-gradient(
         135deg,
         rgba(255,255,255,.10),
@@ -241,8 +253,27 @@ nav a:hover {
 }
 
 .card-icon {
-    font-size: 35px;
-    margin-bottom: 20px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 22px;
+    border-radius: 14px;
+    background: rgba(255,0,20,.12);
+    border: 1px solid rgba(255,40,55,.35);
+    box-shadow: 0 0 20px rgba(255,0,20,.2);
+}
+
+.card-icon svg {
+    width: 25px;
+    height: 25px;
+    fill: none;
+    stroke: #ff3443;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 0 6px #ff0015);
 }
 
 .card h3 {
@@ -332,6 +363,57 @@ nav a:hover {
     font-size: 11px;
 }
 
+/* MUSIC PLAYER */
+
+.music-player {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 12px 18px;
+    border-radius: 18px;
+    background: rgba(15,15,15,.82);
+    border: 1px solid rgba(255,40,55,.45);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 25px rgba(255,0,20,.25);
+}
+
+.music-player button {
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background: #e50914;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+    box-shadow: 0 0 18px rgba(255,0,20,.7);
+}
+
+.music-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.music-info strong {
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.music-info small {
+    color: #999;
+    font-size: 9px;
+}
+
+.music-note {
+    color: #ff2635;
+    font-size: 22px;
+    text-shadow: 0 0 15px red;
+}
+
 /* FOOTER */
 
 footer {
@@ -369,6 +451,12 @@ footer span {
     .download-box h2 {
         font-size: 21px;
     }
+
+    .music-player {
+        bottom: 12px;
+        left: 12px;
+        padding: 9px 12px;
+    }
 }
 </style>
 </head>
@@ -393,7 +481,10 @@ footer span {
 
     <div class="hero-content">
 
-        <div class="badge">✦ OFFICIAL ANDROID LAUNCHER ✦</div>
+        <div class="badge">
+            OFFICIAL LAUNCHER
+            <span>✦</span>
+        </div>
 
         <h1>NOMEA<br>LAUNCHER</h1>
 
@@ -406,7 +497,7 @@ footer span {
         <div class="buttons">
 
             <a href="#download" class="btn btn-red">
-                ⬇ DOWNLOAD NOW
+                DOWNLOAD NOW
             </a>
 
             <a href="#features" class="btn btn-glass">
@@ -432,27 +523,68 @@ footer span {
     <div class="cards">
 
         <div class="card">
-            <div class="card-icon">🎮</div>
+
+            <div class="card-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/>
+                </svg>
+            </div>
+
             <h3>Minecraft Java</h3>
-            <p>Enjoy Minecraft Java Edition on your Android device.</p>
+
+            <p>
+                Enjoy Minecraft Java Edition on your Android device.
+            </p>
+
         </div>
 
         <div class="card">
-            <div class="card-icon">⚡</div>
+
+            <div class="card-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M13 2L4 14h7l-1 8 10-13h-7z"/>
+                </svg>
+            </div>
+
             <h3>Performance</h3>
-            <p>Launcher features designed for a smooth experience.</p>
+
+            <p>
+                Launcher features designed for a smooth experience.
+            </p>
+
         </div>
 
         <div class="card">
-            <div class="card-icon">🧩</div>
+
+            <div class="card-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2l3 4 5 1-2 5 1 5-5 1-2 4-3-4-5-1 2-5-1-5 5-1z"/>
+                </svg>
+            </div>
+
             <h3>Mod Support</h3>
-            <p>Explore supported mod loaders and customize your game.</p>
+
+            <p>
+                Explore supported mod loaders and customize your game.
+            </p>
+
         </div>
 
         <div class="card">
-            <div class="card-icon">💎</div>
+
+            <div class="card-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/>
+                    <path d="M8 12l3 3 5-6"/>
+                </svg>
+            </div>
+
             <h3>Premium Design</h3>
-            <p>Experience the Black and Red Glass Aura interface.</p>
+
+            <p>
+                Experience the Black and Red Glass Aura interface.
+            </p>
+
         </div>
 
     </div>
@@ -474,9 +606,9 @@ footer span {
             Download the official Nomea Launcher release.
         </p>
 
-        <!-- ដាក់ APK DOWNLOAD LINK នៅទីនេះ -->
+        <!-- ADD APK DOWNLOAD LINK HERE -->
         <a href="#" class="btn btn-red">
-            ⬇ DOWNLOAD APK
+            DOWNLOAD APK
         </a>
 
     </div>
@@ -497,21 +629,68 @@ footer span {
 
 </section>
 
+<!-- MUSIC PLAYER -->
+
+<div class="music-player">
+
+    <button id="musicButton" onclick="toggleMusic()">▶</button>
+
+    <div class="music-info">
+        <strong>NOMEA MUSIC</strong>
+        <small>Cambodian Music Player</small>
+    </div>
+
+    <span class="music-note">♫</span>
+
+</div>
+
+<audio id="nomeaMusic" loop>
+    <source src="nomea_music.mp3" type="audio/mpeg">
+</audio>
+
 <!-- FOOTER -->
 
 <footer>
 
-    <p>© 2026 <span>NOMEA LAUNCHER</span>. All Rights Reserved.</p>
+    <p>
+        © 2026 <span>NOMEA LAUNCHER</span>. All Rights Reserved.
+    </p>
 
     <p style="margin-top:10px;">
-        Made for Minecraft Community ❤️
+        Made for Minecraft Community
     </p>
 
 </footer>
 
-<!-- GITHUB DOWNLOAD COUNTER -->
+<!-- JAVASCRIPT -->
 
 <script>
+
+/* MUSIC PLAYER */
+
+const music = document.getElementById("nomeaMusic");
+const musicButton = document.getElementById("musicButton");
+
+function toggleMusic() {
+
+    if (music.paused) {
+
+        music.play().then(() => {
+            musicButton.textContent = "Ⅱ";
+        }).catch(() => {
+            musicButton.textContent = "▶";
+        });
+
+    } else {
+
+        music.pause();
+        musicButton.textContent = "▶";
+
+    }
+
+}
+
+/* GITHUB DOWNLOAD COUNTER */
 
 const GITHUB_USERNAME = "YOUR_USERNAME";
 const GITHUB_REPOSITORY = "YOUR_REPOSITORY";
@@ -562,4 +741,4 @@ loadDownloads();
 </script>
 
 </body>
-  </html>
+    </html>
